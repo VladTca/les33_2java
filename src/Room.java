@@ -3,20 +3,21 @@ import java.util.List;
 
 public record Room(int number, RoomType roomType, int capacity) {
 
-   public Room{
-       if (number < 0 || capacity < 0) {
-           throw new IllegalArgumentException("Номер и вместимость должны быть положительными числами");
-       }
-       if(roomType==null){
-           throw new IllegalArgumentException("Тип номера не может быть пустым");
-       }
-       if(capacity<1 || capacity>6){
-           throw new IllegalArgumentException("Вместимость должна быть от 1 до 6 человек");
-       }
-   }
+    public Room {
+        if (number < 0 || capacity < 0) {
+            throw new IllegalArgumentException("Номер и вместимость должны быть положительными числами");
+        }
+        if (roomType == null) {
+            throw new IllegalArgumentException("Тип номера не может быть пустым");
+        }
+        if (capacity < 1 || capacity > 6) {
+            throw new IllegalArgumentException("Вместимость должна быть от 1 до 6 человек");
+        }
+    }
 
     public static List<Room> getRooms() {
-        List<Room> rooms = new ArrayList<>(){};
+        List<Room> rooms = new ArrayList<>() {
+        };
         rooms.add(new Room(101, RoomType.STANDART, 1));
         rooms.add(new Room(102, RoomType.STANDART, 1));
         rooms.add(new Room(103, RoomType.STANDART, 1));
@@ -46,6 +47,6 @@ public record Room(int number, RoomType roomType, int capacity) {
     public String toString() {
         return String.format("%n%nНомер: %s,%n" +
                 "Тип номера: %s,%n" +
-                "Вместимость: %s",number,roomType,capacity);
+                "Вместимость: %s", number, roomType, capacity);
     }
 }

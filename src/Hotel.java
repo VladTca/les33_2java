@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Hotel {
@@ -25,7 +26,7 @@ public class Hotel {
             }
         }
 
-        filteredRooms.sort((room1, room2) -> Integer.compare(room1.number(), room2.number()));
+        filteredRooms.sort(Comparator.comparingInt(Room::number));
         for (Room room : filteredRooms) {
             System.out.println(room);
         }
